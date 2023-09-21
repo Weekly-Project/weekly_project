@@ -6,9 +6,9 @@ from PIL import Image
 class Main:
     def __init__(self):
         self.subheader = '데이터 분석 & 시각화 주간 프로젝트'
-        self.image1_path = 'page\\datanalysis.png'
-        self.image2_path = 'page\\fubao.jpg'
-        self.image3_path = 'page\\fubao_profile.jpg'
+        self.image1_path = 'page\\img\\datanalysis.png'
+        self.image2_path = 'page\\img\\fubao.jpg'
+        self.image3_path = 'page\\img\\fubao_profile.jpg'
         self.image1 = Image.open(self.image1_path)
         self.image2 = Image.open(self.image2_path)
         self.image3 = Image.open(self.image3_path)
