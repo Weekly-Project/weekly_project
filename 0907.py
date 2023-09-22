@@ -8,12 +8,12 @@ import matplotlib.font_manager as font_manager
 
 # 그래프에서 한글 폰트 적용
 
-font_path = 'E:/python_lecture/functionssssss/func/NanumGothic.ttf'
+font_path = 'NanumGothic.ttf'
 fontprop = font_manager.FontProperties(fname=font_path, size = 20)
 
 
 
-file_path = glob.glob('E:/python_lecture/functionssssss/func/temp/*.csv')
+file_path = glob.glob('temp/*.csv')
 
 
 print(file_path)
