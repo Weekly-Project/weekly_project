@@ -80,8 +80,10 @@ class YouTubeAPI:
         plt.rcParams['axes.unicode_minus'] = False
 
         plt.figure(figsize=(12, 6))
-        plt.bar(top_10_videos1['순위'] - 0.2, top_10_videos1['view'], width=0.4, color='blue', label=query1)
-        plt.bar(top_10_videos2['순위'] + 0.2, top_10_videos2['view'], width=0.4, color='red', label=query2)
+        plt.bar(top_10_videos1['순위'] - 0.2, top_10_videos1['view'], width=0.4, color='#ff9999', label=query1)
+        plt.text(0.3, 10000000, '2021.06.29 업로드', rotation=60)
+        plt.bar(top_10_videos2['순위'] + 0.2, top_10_videos2['view'], width=0.4, color='#66b3ff', label=query2)
+        plt.text(0.7, 40000000, '2020.06.07 업로드', rotation=60)
 
         plt.xticks(top_10_videos1['순위'])  # x 축 라벨을 순위로 설정
         plt.xlabel('순위')
@@ -89,18 +91,12 @@ class YouTubeAPI:
         plt.title(f'Top 10 조회수 비교({query1} vs {query2})')
         plt.legend()
         plt.show()
-'''
-# 출력
-if __name__ == "__main__":
-    api_key = 'AIzaSyCuvYdPw-Lf913DaDTgyEpUiCIjbRdv_yk'
-    youtube_api = YouTubeAPI(api_key)
-    query = '푸바오'
-    video_details = youtube_api.get_video_details(query, max_results=50)
-    print(video_details)
-'''
 
+'''
+# 출력 예시
 if __name__ == "__main__":
     api_key = 'AIzaSyCuvYdPw-Lf913DaDTgyEpUiCIjbRdv_yk'
     query1 = '푸바오'
     query2 = '태범이 무궁이'
     YouTubeAPI.plot_top_10_videos(api_key, query1, query2, max_results=10)
+'''

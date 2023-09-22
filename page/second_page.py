@@ -29,6 +29,7 @@ class project:
             st.write(f"**2. 유튜브 검색량으로 알아보는 푸바오의 인기**")
             trend_fubao = tf.TrendFubao("trend_fubao.csv")
             fubao_graph = trend_fubao.plot_monthly_search_volume()
+            st.set_option('deprecation.showPyplotGlobalUse', False)
             st.pyplot(fubao_graph)
             st.info('''
             올해 초, 우리는 긴 지친 코로나의 그림자로부터 벗어나며 새로운 희망과 함께 봄을 맞이했습니다. 그동안의 거리두기와 마스크 착용의 일상이 조금씩 누그러지자, 우리의 시선은 푸바오에게로 향했습니다.
