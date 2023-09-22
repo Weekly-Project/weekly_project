@@ -3,18 +3,41 @@ from PIL import Image
 from utils import zoo_donut_chart as zoo
 from utils import trend_fubao as tf
 from utils import youtube_vs_graph as yvg
-
+from utils.visitor_gr import VisitorData
 class project:
     def __init__(self):
         self.subheader = '조별 프로젝트'
         self.image1_path = 'page\\img\\fubao_news.png'
         self.image1 = Image.open(self.image1_path)
+        self.image2_path = 'page\\img\\ba1.png'
+        self.image3_path = 'page\\img\\ba2.png'
+        self.image4_path = 'page\\img\\ba3.png'
+        self.image5_path = 'page\\img\\ba4.png'
+        self.image2 = Image.open(self.image2_path)
+        self.image3 = Image.open(self.image3_path)
+        self.image4 = Image.open(self.image4_path)
+        self.image5 = Image.open(self.image5_path)
 
     def app2(self):
         st.subheader(self.subheader)
         tab1, tab2, tab3, tab4 = st.tabs(['방문객 변화', '푸바오', '한국 호랑이', '매출량 변화'])
         with tab1:
-            st.write('방문객 변화')
+            col1,col2 = st.columns([3,3])
+            with col1:
+                st.image(self.image2)
+                st.image(self.image3)
+            with col2:
+                st.image(self.image4)
+                st.image(self.image5)
+            st.info('''위에 보이는 4개의 기사를 보았을 때 코로나로 인한 거리두기 기간동안 방문객 감소로 인한 매출액이 대폭 감소했던
+                     에버랜드는 작년기준 가장 많은 사람이 방문한 관광지로 뽑히며 회복한 모습을 보여주고 있다.
+                     이러한 결과가 푸바오의 인기를 통한 영향이 있었는지 알아보기위해 코로나 이전, 코로나 시기, 그 이후로 단계를 나눠
+                     4년간의 방문객 데이터를 시각화 하여 도출하였다.''')
+
+            vs = VisitorData()
+            fig1 = vs.plot_visitor_data()
+            st.pyplot(fig1)
+            
         with tab2:
             st.write(f"**1. 에버랜드 판다 푸바오의 인기?**")
             st.image(self.image1)
