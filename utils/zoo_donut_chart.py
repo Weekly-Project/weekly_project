@@ -133,17 +133,3 @@ class YouTubeChannelAnalyzer:
 
         plt.tight_layout()
         plt.show()
-'''
-# 사용 예시
-if __name__ == "__main__":
-    api_key = 'AIzaSyCuvYdPw-Lf913DaDTgyEpUiCIjbRdv_yk'
-    channel_analyzer = YouTubeChannelAnalyzer(api_key)
-    channel_name = '말하는동물원 뿌빠TV'
-    channel_id = channel_analyzer.get_channel_info(channel_name)
-
-    if channel_id:
-        video_titles, video_ids = channel_analyzer.get_channel_videos(channel_id)
-        video_details = channel_analyzer.get_video_details(video_ids)
-        print(video_details)
-        channel_analyzer.plot_channel_analysis(video_details)
-'''
