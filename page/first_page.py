@@ -1,15 +1,15 @@
 import streamlit as st
 from PIL import Image
-from utils.temp_ import Temp 
-
+from utils.temp_ import Temp
 
 class assignment:
     def __init__(self):
         self.subheader = '공통 과제(기상 데이터 분석과 알고리즘)'
-
+        self.image1_path = 'page\\img\\wp_streamlit(class).drawio.png'
+        self.image1 = Image.open(self.image1_path)
 
     def app1(self):
-        tab1, tab2 = st.tabs(['데이터 QC 검사', '시계열 분석'])
+        tab1, tab2, tab3 = st.tabs(['데이터 QC 검사', '시계열 분석', 'Streamlit Diagram'])
 
         with tab1:
             tm = Temp()
@@ -70,25 +70,29 @@ class assignment:
             st.subheader('※수집한 데이터에 이상이 없음을 확인할 수 있다.')
         
         with tab2:
-            st.write('일별 기온그래프')
+            st.write(f'**#. 일별 기온그래프**')
             fig1 = tm.plot_()
             st.pyplot(fig1)
             
-            st.write('1시간 평균 그래프')
+            st.write(f'**#. 1시간 평균 그래프**')
             fig2 = tm.plot_temperature_graph('1h','1시간')
             st.pyplot(fig2)
             
-            st.write('3시간 평균 그래프')
+            st.write(f'**#. 3시간 평균 그래프**')
             fig3 = tm.plot_temperature_graph('3h','3시간')
             st.pyplot(fig3)
             
-            st.write('8시간 평균 그래프')
+            st.write(f'**#. 8시간 평균 그래프**')
             fig4 = tm.plot_temperature_graph('8h','8시간')
             st.pyplot(fig4)
             
-            st.write('1일 평균 그래프')
+            st.write(f'**#. 1일 평균 그래프**')
             fig5 = tm.plot_temperature_graph('D','1일')
             st.pyplot(fig5)
+
+        with tab3:
+            st.write(f"**1. Class를 사용한 Streamlit Multipage Diagram**")
+            st.image(self.image1)
             
 
 if __name__ == "__main__":
