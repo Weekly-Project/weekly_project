@@ -9,9 +9,11 @@ class Main:
         self.image1_path = 'page\\img\\datanalysis.png'
         self.image2_path = 'page\\img\\fubao.jpg'
         self.image3_path = 'page\\img\\fubao_profile.jpg'
+        self.image4_path = 'page\\img\\tiger.png'
         self.image1 = Image.open(self.image1_path)
         self.image2 = Image.open(self.image2_path)
         self.image3 = Image.open(self.image3_path)
+        self.image4 = Image.open(self.image4_path)
 
     def app(self):
         st.subheader(self.subheader)
@@ -60,11 +62,26 @@ class Main:
                         **이름**  : 푸바오(Fubao, 福宝) \n
                         **종족**  : 자이언트 판다 \n
                         **출생**  : 2020년 7월 20일 / 에버랜드 판다월드(용인시 처인구) \n
-                        **가족**  : 아빠 러바오, 엄마 아이바오, 쌍둥이 동생판다 \n
+                        **가족**  : 아빠(러바오), 엄마(아이바오), 쌍둥이 동생판다 \n
                         **특징**  : 국내 최초 자연번식으로 태어난 판다 \n
                         **별명**  : 푸뚠뚠, 뚠빵이, 푸린세스, 푸룽지, 푸공주, 용인시 털주먹, 푸질머리 등
                         ''')
 
+            st.markdown("")
+            st.write('한국 호랑이 태범이, 무궁이도 있어요!')
+            st.markdown("")
+            st.markdown('##### 태범이, 무궁이 프로필')
+            col5, col6 = st.columns([2, 3])
+            with col5:
+                st.image(self.image4)
+            with col6:
+                st.info('''
+                        **이름**  : 태범(太汎), 무궁(無窮) \n
+                        **종족**  : 시베리아 호랑이 \n
+                        **출생**  : 2020년 2월 20일 / 에버랜드 타이거밸리(용인시 처인구) \n
+                        **가족**  : 아빠(태호), 엄마(건곤), 동생(아름, 다운, 우리, 나라) \n
+                        **특징**  : 에버랜드에서 최초로 자연포육으로 길러진 호랑이, 21년 10월 25일부터 국립백두대간수목원 호랑이숲에서 지내고 있다. \n
+                ''')
 
 
 if __name__ == "__main__":
