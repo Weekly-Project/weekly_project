@@ -5,6 +5,7 @@ from utils import trend_fubao as tf
 from utils import youtube_vs_graph as yvg
 from utils.visitor_gr import VisitorData
 from utils.ss_sales import SalesComparison
+from utils.yongin_sns import SNS
 
 class project:
     def __init__(self):
@@ -17,6 +18,7 @@ class project:
         self.image6_path = 'page\\img\\sales_fubao.png'
         self.image7_path = 'page\\img\\매출기준.png'
         self.image8_path = 'page\\img\\wp_prj_diagram.drawio.png'
+        self.image9_path = 'page\\img\\everland.png'
         self.image1 = Image.open(self.image1_path)
         self.image2 = Image.open(self.image2_path)
         self.image3 = Image.open(self.image3_path)
@@ -25,10 +27,12 @@ class project:
         self.image6 = Image.open(self.image6_path)
         self.image7 = Image.open(self.image7_path)
         self.image8 = Image.open(self.image8_path)
+        self.image9 = Image.open(self.image9_path)
 
     def app2(self):
         st.subheader(self.subheader)
-        tab0, tab1, tab2, tab3, tab4 = st.tabs(['Project Diagram','방문객 변화', '푸바오', '한국 호랑이', '매출량 변화'])
+        tab0, tab1, tab2, tab3, tab4, tab5 = st.tabs([
+            'Project Diagram','방문객 변화', '푸바오', '한국 호랑이', 'SNS 언급량 변화','매출량 변화'])
         with tab0:
             st.image(self.image8)
         with tab1:
@@ -103,8 +107,22 @@ class project:
             그러나 흥미로운 점은 2위부터는 모두 최근에 올라온 푸바오의 영상들이 차지하고 있다는 것입니다. 푸바오의 사랑스러운 모습과 독특한 매력은 유튜브 사용자들 사이에서 큰 인기를 얻고 있으며, 그 결과로 그의 영상들은 높은 조회수를 기록하고 있습니다.\n
             이러한 결과를 통해 푸바오가 얼마나 많은 사람들에게 사랑받고 있는지, 푸바오의 매력이 얼마나 많은 이들을 매료시키고 있는지를 확인할 수 있습니다. 
             ''')
-            
+
         with tab4:
+            st.markdown('##### 기간별 해당 지역 SNS 언급량')
+            col1,col2 = st.columns([3,3])
+            with col1:
+                st.image(self.image9)
+            with col2:
+                st.write('''
+                에버랜드는 경기도 용인시 처인구에 위치해 있는 어트렉션, 사파리, 리조트 등을 포함한 국내 최대의 테마파크입니다. \n
+                실제로 호랑이 남매 및 푸바도로 인해 에버랜드가 위치한 용인시 처인구에 대한 대중의 관심이 증가했는지를 확인하기 위해 SNs에서 
+                용인시 처인구의 언급량이 어떠한 추세로 변화하였는지 살펴보았습니다.
+                ''')
+            sns_graph = SNS.plot_graph()
+            st.pyplot(sns_graph)
+
+        with tab5:
             st.write(f'**1. 동물 마케팅 성공에 따른 에버랜드 매출량 변화**')
             sales_comparison = SalesComparison('삼성물산 매출액.xlsx')
             st.pyplot(sales_comparison.plot_sales_comparison())
