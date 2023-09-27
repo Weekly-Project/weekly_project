@@ -108,19 +108,21 @@ class project:
             이러한 결과를 통해 푸바오가 얼마나 많은 사람들에게 사랑받고 있는지, 푸바오의 매력이 얼마나 많은 이들을 매료시키고 있는지를 확인할 수 있습니다. 
             ''')
 
-        with tab4:
+        with tab4:   
             st.markdown('##### 기간별 해당 지역 SNS 언급량')
-            col1,col2 = st.columns([3,3])
+            col1, col2 = st.columns([3, 3])
             with col1:
-                st.image(self.image9)
+                st.image(self.image9)    
             with col2:
                 st.write('''
                 에버랜드는 경기도 용인시 처인구에 위치해 있는 어트렉션, 사파리, 리조트 등을 포함한 국내 최대의 테마파크입니다. \n
-                실제로 호랑이 남매 및 푸바도로 인해 에버랜드가 위치한 용인시 처인구에 대한 대중의 관심이 증가했는지를 확인하기 위해 SNs에서 
+                실제로 호랑이 남매 및 푸바오로 인해 에버랜드가 위치한 용인시 처인구에 대한 대중의 관심이 증가했는지를 확인하기 위해 SNS에서 
                 용인시 처인구의 언급량이 어떠한 추세로 변화하였는지 살펴보았습니다.
-                ''')
-            sns_graph = SNS.plot_graph()
+                ''')    
+            graph = SNS()
+            sns_graph = graph.plot_graph()
             st.pyplot(sns_graph)
+
 
         with tab5:
             st.write(f'**1. 동물 마케팅 성공에 따른 에버랜드 매출량 변화**')
