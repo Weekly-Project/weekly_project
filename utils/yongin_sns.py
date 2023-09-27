@@ -37,5 +37,4 @@ if __name__ == "__main__":
     sns_2023_file = '.utils/sns_yongin/sns_yongin_2023.csv'
     
     graph = SNS(sns_2019_file, sns_2021_file, sns_2023_file)
-    sns_graph = graph.plot_graph()
-    st.pyplot()
+    graph.plot_graph()
