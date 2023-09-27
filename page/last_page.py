@@ -29,6 +29,7 @@ class final:
             st.write('')
             st.write('')
             st.write(f'**# 자료 출처**')
+            st.write('기상자료개방포털(공통과제 - 시계열분석)')
             st.write('관광지식정보시스템(에버랜드 연도별 방문객 수)')
             st.write('구글 트랜드(푸바오 유튜브 검색량)')
             st.write('유튜브 API(유튜브 채널 동영상 비율, 푸바오vs한국호랑이 비교)')
