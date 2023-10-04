@@ -19,6 +19,8 @@ class project:
         self.image7_path = 'page\\img\\매출기준.png'
         self.image8_path = 'page\\img\\wp_prj_diagram.drawio.png'
         self.image9_path = 'page\\img\\everland.png'
+        self.image10_path = 'page\\img\\zoo_count.png'
+        self.image11_path = 'page\\img\\pvst.png'
         self.image1 = Image.open(self.image1_path)
         self.image2 = Image.open(self.image2_path)
         self.image3 = Image.open(self.image3_path)
@@ -28,6 +30,8 @@ class project:
         self.image7 = Image.open(self.image7_path)
         self.image8 = Image.open(self.image8_path)
         self.image9 = Image.open(self.image9_path)
+        self.image10 = Image.open(self.image10_path)
+        self.image11 = Image.open(self.image11_path)
 
     def app2(self):
         st.subheader(self.subheader)
@@ -51,7 +55,7 @@ class project:
             vs = VisitorData()
             fig1 = vs.plot_visitor_data()
             st.pyplot(fig1)
-            
+
         with tab2:
             st.write(f"**1. 에버랜드 판다 푸바오의 인기?**")
             st.image(self.image1)
@@ -77,19 +81,7 @@ class project:
             st.write(' ')
             
             st.write(f"**3. 에버랜드 동물원 유튜브 채널 '말하는동물원 뿌빠TV'의 최근 50개 동영상 비율로 알아보는 푸바오 인기**")
-            api_key = 'AIzaSyCuvYdPw-Lf913DaDTgyEpUiCIjbRdv_yk'
-            channel_analyzer = zoo.YouTubeChannelAnalyzer(api_key)
-            channel_name = '말하는동물원 뿌빠TV'
-            channel_id = channel_analyzer.get_channel_info(channel_name)
-
-            if channel_id:
-                video_titles, video_ids = channel_analyzer.get_channel_videos(channel_id)
-                video_details = channel_analyzer.get_video_details(video_ids)
-                fig = channel_analyzer.plot_channel_analysis(video_details)
-                st.set_option('deprecation.showPyplotGlobalUse', False)
-                st.pyplot(fig)
-            else:
-                st.write("채널 정보를 찾을 수 없습니다.")
+            st.image(self.image10)
             st.info('''
             에버랜드는 푸바오를 효과적으로 마케팅 활용하고 있음을 확인할 수 있습니다. '말하는동물원 뿌빠TV'의 영상들은 에버랜드의 동물원과 관련된 컨텐츠로, 푸바오와 사육사분들의 모습을 다양하게 보여주고 있습니다. 푸바오가 포함된 영상은 전체의 과반수 이상을 차지하고 있습니다.\n
             더불어, 푸바오를 포함한 동영상의 조회수가 전체 조회수의 80% 이상을 차지하고 있으므로, 이 컨텐츠가 관람객들에게 높은 관심을 불러일으키고 있음을 알 수 있습니다. 이는 푸바오를 특별한 캐릭터로 활용하고 있는 결과로 보입니다.\n
@@ -97,11 +89,7 @@ class project:
             ''')
         with tab3:
             st.write(f'**1. 푸바오와 호랑이(태범이, 무궁이) 유튜브 조회수 비교**')
-            api_key = 'AIzaSyCuvYdPw-Lf913DaDTgyEpUiCIjbRdv_yk'
-            query1 = '푸바오'
-            query2 = '태범이 무궁이'
-            vs_graph = yvg.YouTubeAPI.plot_top_10_videos(api_key, query1, query2, max_results=10)
-            st.pyplot(vs_graph)
+            st.image(self.image11)
             st.info('''
             에버랜드의 두 마스코트, 판다 푸바오와 호랑이 태범이 무궁이 유튜브에서의 조회수 경쟁은 흥미로운 결과를 보여주고 있습니다. 2020년에 공개된 호랑이 태범이, 무궁이의 영상이 가장 높은 조회수를 기록했으며, 그 인기는 매우 두드러졌습니다.\n
             그러나 흥미로운 점은 2위부터는 모두 최근에 올라온 푸바오의 영상들이 차지하고 있다는 것입니다. 푸바오의 사랑스러운 모습과 독특한 매력은 유튜브 사용자들 사이에서 큰 인기를 얻고 있으며, 그 결과로 그의 영상들은 높은 조회수를 기록하고 있습니다.\n
@@ -118,7 +106,9 @@ class project:
                 에버랜드는 경기도 용인시 처인구에 위치해 있는 어트렉션, 사파리, 리조트 등을 포함한 국내 최대의 테마파크입니다. \n
                 실제로 호랑이 남매 및 푸바오로 인해 에버랜드가 위치한 용인시 처인구에 대한 대중의 관심이 증가했는지를 확인하기 위해 SNS에서 
                 용인시 처인구의 언급량이 어떠한 추세로 변화하였는지 살펴보았습니다.
-                ''')    
+                ''')
+
+            #graph = SNS('sns_yongin_2019.csv', 'sns_yongin_2021.csv', 'sns_yongin_2023.csv')
             graph = SNS()
             sns_graph = graph.plot_graph()
             st.pyplot(sns_graph)
