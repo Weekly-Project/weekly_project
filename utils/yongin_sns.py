@@ -3,7 +3,9 @@ import matplotlib.pyplot as plt
 import streamlit as st
 
 class SNS:
-    def __init__(self, sns_2019_file, sns_2021_file, sns_2023_file):
+    def __init__(self, sns_2019_file = './sns_yongin/sns_yongin_2019.csv',
+                 sns_2021_file = './sns_yongin/sns_yongin_2021.csv',
+                 sns_2023_file = './sns_yongin/sns_yongin_2023.csv'):
         self.sns_2019_file = sns_2019_file
         self.sns_2021_file = sns_2021_file
         self.sns_2023_file = sns_2023_file
@@ -12,9 +14,9 @@ class SNS:
         plt.yticks(range(0, 31000, 5000))
 
     def load_data(self):
-        sns_2019 = pd.read_csv(self.sns_2019_file)
-        sns_2021 = pd.read_csv(self.sns_2021_file)
-        sns_2023 = pd.read_csv(self.sns_2023_file)
+        sns_2019 = pd.read_csv(self.sns_2019_file, encoding='cp949')
+        sns_2021 = pd.read_csv(self.sns_2021_file, encoding='cp949')
+        sns_2023 = pd.read_csv(self.sns_2023_file, encoding='cp949')
         return sns_2019, sns_2021, sns_2023
 
     def plot_graph(self):
@@ -32,9 +34,5 @@ class SNS:
         plt.tight_layout()
 
 if __name__ == "__main__":
-    sns_2019_file = '.utils/sns_yongin/sns_yongin_2019.csv'
-    sns_2021_file = '.utils/sns_yongin/sns_yongin_2021.csv'
-    sns_2023_file = '.utils/sns_yongin/sns_yongin_2023.csv'
-    
-    graph = SNS(sns_2019_file, sns_2021_file, sns_2023_file)
+    graph = SNS()
     graph.plot_graph()
